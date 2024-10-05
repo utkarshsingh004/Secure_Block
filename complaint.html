@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File a Cyber Complaint</title>
+    <style>
+        /* General Styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f1f1f1;
+            margin: 0;
+            padding: 0;
+        }
+        .complaint-container {
+            width: 100%;
+            max-width: 500px;
+            margin: 50px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #1d3557;
+            margin-bottom: 20px;
+        }
+        .complaint-container label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        .complaint-container input[type="text"],
+        .complaint-container textarea,
+        .complaint-container input[type="date"],
+        .complaint-container select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .complaint-container input[type="file"] {
+            margin: 10px 0;
+        }
+        .complaint-container input[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            background-color: #1d3557;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .complaint-container input[type="submit"]:hover {
+            background-color: #457b9d;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .complaint-container {
+                width: 90%;
+                margin: 20px auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="complaint-container">
+        <h2>File a Cyber Complaint</h2>
+        <form action="/submit-complaint" method="POST" enctype="multipart/form-data">
+            <label for="category">Category of Complaint</label>
+            <select id="category" name="category" required>
+                <option value="">Select Category</option>
+                <option value="Fraud">Fraud</option>
+                <option value="Hacking">Hacking</option>
+                <option value="Identity Theft">Identity Theft</option>
+                <option value="Harassment">Harassment</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <label for="description">Description of the Incident</label>
+            <textarea id="description" name="description" rows="5" placeholder="Describe the incident in detail" required></textarea>
+
+            <label for="date">Date of Incident</label>
+            <input type="date" id="date" name="date" required>
+
+            <label for="evidence">Upload Evidence (Optional)</label>
+            <input type="file" id="evidence" name="evidence">
+
+            <input type="submit" value="Submit Complaint">
+        </form>
+    </div>
+
+</body>
+</html>

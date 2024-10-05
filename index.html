@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Complaint Website</title>
+    <style>
+        /* Style for header */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        header {
+            background-color: #1d3557;
+            padding: 10px 20px;
+            color: white;
+        }
+        .logo {
+            float: left;
+            font-size: 24px;
+            font-weight: bold;
+            color: #f1faee;
+            text-decoration: none;
+        }
+        nav {
+            float: right;
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        nav ul li {
+            display: inline;
+            margin-left: 20px;
+        }
+        nav ul li a {
+            color: #f1faee;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        nav ul li a:hover {
+            color: #a8dadc;
+        }
+        /* Clearfix to handle float issues */
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        /* Responsive design */
+        @media screen and (max-width: 600px) {
+            nav ul li {
+                display: block;
+                text-align: center;
+                margin-left: 0;
+                margin-top: 10px;
+            }
+            nav {
+                float: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="clearfix">
+        <a href="#" class="logo">CyberSecure</a>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="complaint.html">File a Complaint</a></li>
+                <li><a href="#track">Incident Tracking</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+                <li><a href="log_in.html">Log in</a></li>
+            </ul>
+        </nav>
+    </header>
+
+</body>
+</html>
