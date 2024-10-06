@@ -60,6 +60,10 @@
             background-color: #457b9d;
         }
 
+        .other-category-input {
+            display: none;
+        }
+
         /* Responsive Design */
         @media (max-width: 600px) {
             .complaint-container {
@@ -68,34 +72,68 @@
             }
         }
     </style>
+    <script>
+        function toggleOtherCategoryInput() {
+            var categorySelect = document.getElementById('category');
+            var otherInput = document.getElementById('other-category');
+            
+            if (categorySelect.value === 'Other') {
+                otherInput.style.display = 'block';
+            } else {
+                otherInput.style.display = 'none';
+            }
+        }
+    </script>
 </head>
 <body>
 
-    <div class="complaint-container">
-        <h2>File a Cyber Complaint</h2>
-        <form action="/submit-complaint" method="POST" enctype="multipart/form-data">
-            <label for="category">Category of Complaint</label>
-            <select id="category" name="category" required>
-                <option value="">Select Category</option>
-                <option value="Fraud">Fraud</option>
-                <option value="Hacking">Hacking</option>
-                <option value="Identity Theft">Identity Theft</option>
-                <option value="Harassment">Harassment</option>
-                <option value="Other">Other</option>
-            </select>
+    
+    <header class="clearfix">
+        <a href="#" class="logo">CyberSecure</a>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="complaint.html">File a Complaint</a></li>
+                <li><a href="#track">Incident Tracking</a></li>
+                <li><a href="contact_us.html">Contact Us</a></li>
+                <li><a href="log_in.html">Log in</a></li>
+            </ul>
+        </nav>
+    </header>
 
-            <label for="description">Description of the Incident</label>
-            <textarea id="description" name="description" rows="5" placeholder="Describe the incident in detail" required></textarea>
-
-            <label for="date">Date of Incident</label>
-            <input type="date" id="date" name="date" required>
-
-            <label for="evidence">Upload Evidence (Optional)</label>
-            <input type="file" id="evidence" name="evidence">
-
-            <input type="submit" value="Submit Complaint">
-        </form>
-    </div>
+    <main>
+        <div class="complaint-container">
+            <h2>File a Cyber Complaint</h2>
+            <form action="/submit-complaint" method="POST" enctype="multipart/form-data">
+                <label for="category">Category of Complaint</label>
+                <select id="category" name="category" required onchange="toggleOtherCategoryInput()">
+                    <option value="">Select Category</option>
+                    <option value="Fraud">Fraud</option>
+                    <option value="Hacking">Hacking</option>
+                    <option value="Identity Theft">Identity Theft</option>
+                    <option value="Harassment">Harassment</option>
+                    <option value="Other">Other</option>
+                </select>
+    
+                <!-- Hidden Other Category Text Input -->
+                <div id="other-category" class="other-category-input">
+                    <label for="other-category-text">Please Specify Other Category</label>
+                    <input type="text" id="other-category-text" name="other-category-text" placeholder="Enter other category">
+                </div>
+    
+                <label for="description">Description of the Incident</label>
+                <textarea id="description" name="description" rows="5" placeholder="Describe the incident in detail" required></textarea>
+    
+                <label for="date">Date of Incident</label>
+                <input type="date" id="date" name="date" required>
+    
+                <label for="evidence">Upload Evidence (Optional)</label>
+                <input type="file" id="evidence" name="evidence">
+    
+                <input type="submit" value="Submit Complaint">
+            </form>
+        </div>
+    </main>
 
 </body>
 </html>

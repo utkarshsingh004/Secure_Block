@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Women's Cyber Complaint</title>
+    <style>
+        /* General Styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f1f1f1;
+            margin: 0;
+            padding: 0;
+        }
+
+        .women-complaint-container {
+            width: 100%;
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #ffe0e9; /* Light pink background to signify women's section */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border: 2px solid #ff6392; /* Border in a pink shade */
+        }
+
+        h2 {
+            text-align: center;
+            color: #ff6392; /* Pink heading for women's complaint section */
+            margin-bottom: 20px;
+        }
+
+        .women-complaint-container label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .women-complaint-container input[type="text"],
+        .women-complaint-container textarea,
+        .women-complaint-container input[type="date"],
+        .women-complaint-container select {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .women-complaint-container input[type="file"] {
+            margin: 10px 0;
+        }
+
+        .women-complaint-container input[type="submit"] {
+            width: 100%;
+            padding: 15px;
+            background-color: #ff6392;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .women-complaint-container input[type="submit"]:hover {
+            background-color: #ff85a6;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .women-complaint-container {
+                width: 90%;
+                margin: 20px auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="women-complaint-container">
+        <h2>File a Women's Cyber Complaint</h2>
+        <form action="/submit-women-complaint" method="POST" enctype="multipart/form-data">
+            <label for="category">Category of Complaint</label>
+            <select id="category" name="category" required>
+                <option value="">Select Category</option>
+                <option value="Harassment">Online Harassment</option>
+                <option value="Stalking">Cyber Stalking</option>
+                <option value="Abuse">Abusive Content</option>
+                <option value="Identity Theft">Identity Theft</option>
+                <option value="Defamation">Defamation</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <label for="description">Description of the Incident</label>
+            <textarea id="description" name="description" rows="5" placeholder="Describe the incident in detail" required></textarea>
+
+            <label for="date">Date of Incident</label>
+            <input type="date" id="date" name="date" required>
+
+            <label for="evidence">Upload Evidence (Optional)</label>
+            <input type="file" id="evidence" name="evidence">
+
+            <input type="submit" value="Submit Women's Complaint">
+        </form>
+    </div>
+
+</body>
+</html>
