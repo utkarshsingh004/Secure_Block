@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,112 +10,119 @@
         /* Style for header */
         body {
             margin: 0;
+            padding: 0;
             font-family: Arial, sans-serif;
         }
+
+        /* Style for header */
         header {
             background-color: #1d3557;
             padding: 10px 0;
             color: white;
             width: 100%;
+            height: 40px;
+            border: 2px solid white;
+            display: flex;
+            flex-direction: row;
         }
+
         .logo {
-            float: left;
-            font-size: 24px;
-            font-weight: bold;
-            color: #f1faee;
-            text-decoration: none;
-            width: 50%;
-            padding-left: 1%;
+            width: 45%;
         }
-        nav {
-            float: right;
+
+        .logo img {
+            width: 40px;
+            padding-left: 4%;
+        }
+
+        header nav {
             width: 49%;
         }
-        nav ul {
+
+        header nav ul {
+            width: 100%;
+            display: flex;
+            flex: row;
+            justify-content: space-around;
+            margin-top: 0px;
+        }
+
+        header nav ul li {
             list-style: none;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
+        }
+
+        header nav ul li a {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-weight: bolder;
+            font-size: larger;
+        }
+
+        .hamburger {
+            display: none;
+        }
+
+        /* Style for main */
+        main {
+            margin-top: 3%;
             width: 100%;
         }
-        nav ul li {
-            display: inline;
-            margin-left: 7%;
-        }
-        nav ul li a {
-            color: #f1faee;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 16px;
-        }
-        nav ul li a:hover {
-            color: #a8dadc;
-        }
-        /* Clearfix to handle float issues */
-        .clearfix::after {
-            content: "";
-            clear: both;
-            display: table;
-        }
-        main{
+
+        .banner {
             width: 100%;
         }
-        .banner{
-            width: 100%;
-            /* border: 2px solid red; */
-        }
-        .banner img{
+
+        .banner img {
             width: 95%;
             margin-left: 3%;
             margin-top: 2%;
-            /* height: ; */
         }
-        .container{
+
+        .container {
             position: relative;
             top: 30px;
             width: 100%;
-            height: 45vh;
+            height: 500px;
             display: flex;
             flex-direction: row;
             justify-content: space-around;
-            /* border: 2px solid black; */
+            margin-top: 3%;
         }
-        .womenAndChild{
+
+        .womenAndChild {
             background-image: url(images/childwomem.jpg);
             background-repeat: no-repeat;
             background-size: contain;
             background-position: center;
+            height: 80%;
             width: 28%;
-            height: 100%;
-            max-width: 1200px;
-            /* margin: 50px auto; */
             padding: 20px;
             background-color: white;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border: 1px solid #ddd;
-            position: relative;
-            /* top: 10px; */
-            /* left: 10px; */
+            border: 1px solid #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            text-align: center;
         }
-        .womenAndChild p{
-            color: black;
+
+        .womenAndChild p {
+            color: pink;
             font-size: x-large;
             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             font: 18px;
             font-weight: 700;
-            position: relative;
-            top:97%;
-            left: 7%;
             /* border: 2px solid black; */
             width: 85%;
         }
-        .womenAndChild:hover{
-            border: 2px solid blue;
+
+        .womenAndChild:hover {
+            border: 2px solid pink;
         }
-        .financialFraud{
+
+        .financialFraud {
             width: 28%;
-            height: 100%;
+            height: 80%;
             background-image: url(images/othercybercrime.jpg);
             background-repeat: no-repeat;
             background-size: contain;
@@ -124,25 +132,27 @@
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border: 1px solid #ddd;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            text-align: center;
         }
-        .financialFraud p{
-            color: black;
+
+        .financialFraud p {
+            color: blue;
             font-size: x-large;
             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             font: 18px;
             font-weight: 700;
-            position: relative;
-            top:97%;
-            left: 25%;
-            /* border: 2px solid black; */
-            width: 51%;
         }
-        .financialFraud:hover{
-            border: 2px solid pink;
+
+        .financialFraud:hover {
+            border: 2px solid blue;
         }
-        .otherCyberCrime{
+
+        .otherCyberCrime {
             width: 28%;
-            height: 100%;
+            height: 80%;
             background-image: url(images/Data_security_24.jpg);
             background-repeat: no-repeat;
             background-size: contain;
@@ -152,61 +162,64 @@
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border: 1px solid #ddd;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            text-align: center;
         }
-        .otherCyberCrime p{
-            color: black;
+
+        .otherCyberCrime p {
+            color: yellow;
             font-size: x-large;
             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             font: 18px;
             font-weight: 700;
             position: relative;
-            top:97%;
-            left: 22%;
-            width: 57%;
-            /* border: 2px solid black; */
         }
-        .otherCyberCrime:hover{
+
+        .otherCyberCrime:hover {
             border: 2px solid yellow;
         }
-        .button-container button{
+
+        .button-container button {
             height: 40px;
             position: relative;
-            top: 40vh;
-            left: 10vw;
             border-radius: 25px;
             background-color: rgb(97, 165, 248);
             color: white;
         }
-        .learning-container{
+
+        .learning-container {
             width: 100%;
             height: 450px;
-            /* border: 2px solid black; */
-            margin-top: 13%;
-            /* height: 300px; */
+            margin-top: 3%;
             background-color: #a8dadc;
         }
-        .head-context{
-            /* border: 2px solid red; */
+
+        .head-context {
             display: flex;
             flex-direction: row;
             justify-content: center;
         }
-        .head-context img{
+
+        .head-context img {
             width: 60px;
         }
-        .head-context p{
+
+        .head-context p {
             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             font-size: x-large;
             font-weight: 800;
         }
-        .body-text{
+
+        .body-text {
             margin-top: 2%;
-            /* border: 2px solid green; */
             display: flex;
             flex-direction: row;
             justify-content: space-around;
         }
-        .citizen-manual{
+
+        .citizen-manual {
             width: 22%;
             box-shadow: 0px 4px 20px rgba(8, 41, 19, 0.04);
             border-radius: 8px;
@@ -214,140 +227,147 @@
             background-repeat: no-repeat;
             background-size: cover;
             text-align: center;
-        }
-        .citizen-manual:hover{
-            /* background-color: white; */
-            /* background-image: none; */
-            transform: scale(1.1);
-        }
-        .citizen-manual img{
-            width: 60px;
-            top: 3%;
-            
-        }
-        .citizen-manual h2{
-            position: relative;
-            top: 1%;
-            /* left: 15%; */
-        }
-        .citizen-manual p{
-            position: relative;
-            top:5%;
-            color: black;
-        }
-        .citizen-manual h4{
-            position: relative;
-            top: 21%;
-            /* left: 30%; */
-        }
-        .cyber-safety-tips{
-            width: 22%;
-            box-shadow: 0px 4px 20px rgba(8, 41, 19, 0.04);
-            border-radius: 8px;
-            background-image: url(images/t-b-s-texture.webp);
-            background-repeat: no-repeat;
-            background-size: cover;
-            text-align: center;
-        }
-        .cyber-safety-tips:hover{
-            /* background-color: white; */
-            /* background-image: none; */
-            transform: scale(1.1);
-        }
-        .cyber-safety-tips img{
-            width: 60px;
-            position: relative;
-            top: 3%;
-            /* left: 30%; */
-        }
-        .cyber-safety-tips h2{
-            position: relative;
-            top: 1%;
-            /* left: 13%; */
-        }
-        .cyber-safety-tips p{
-            position: relative;
-            top: 5%;
-            color: black;
-        }
-        .cyber-safety-tips h4{
-            position: relative;
-            top: 5%;
-            /* left: 30%; */
-        }
-        .cyber-awarness{
-            width: 22%;
-            box-shadow: 0px 4px 20px rgba(8, 41, 19, 0.04);
-            border-radius: 8px;
-            background-image: url(images/abstract-background.webp);
-            background-repeat: no-repeat;
-            background-size: cover;
-            text-align: center;
-        }
-        .cyber-awarness:hover{
-            /* background-color: white; */
-            /* background-image: none; */
-            transform: scale(1.1);
-        }
-        .cyber-awarness img{
-            width: 60px;
-            position: relative;
-            top: 3%;
-            /* left: 30%; */
-        }
-        .cyber-awarness h2{
-            position: relative;
-            top: 1%;
-            /* left: 13%; */
-        }
-        .cyber-awarness p{
-            position: relative;
-            top: 5%;
-            color: black;
-            /* left: 30%; */
-        }
-        .cyber-awarness h4{
-            position: relative;
-            top: 21%;
-            /* left: 30%; */
-        }
-        .daily-digest{
-            width: 22%;
-            box-shadow: 0px 4px 20px rgba(8, 41, 19, 0.04);
-            border-radius: 8px;
-            background-image: url(images/t-b-s-texture.webp);
-            background-repeat: no-repeat;
-            background-size: cover;
-            text-align: center;
-        }
-        .daily-digest:hover{
-            /* background-color: white; */
-            /* background-image: none; */
-            transform: scale(1.1);
-        }
-        .daily-digest img{
-            width: 60px;
-            position: relative;
-            top: 3%;
-            /* left: 30%; */
-        }
-        .daily-digest h2{
-            position: relative;
-            top: 1%;
-            /* left: 21%; */
-        }
-        .daily-digest p{
-            position: relative;
-            top: 5%;
-            color: black;
-            /* left: 30%; */
-        }
-        .daily-digest h4{
-            position: relative;
-            top: 14%;
-            /* left: 30%; */
         }
 
+        .citizen-manual:hover {
+            transform: scale(1.1);
+        }
+
+        .citizen-manual img {
+            width: 60px;
+            top: 3%;
+
+        }
+
+        .citizen-manual h2 {
+            position: relative;
+            top: 1%;
+        }
+
+        .citizen-manual p {
+            position: relative;
+            top: 5%;
+            color: black;
+        }
+
+        .citizen-manual h4 {
+            position: relative;
+            top: 21%;
+        }
+
+        .cyber-safety-tips {
+            width: 22%;
+            box-shadow: 0px 4px 20px rgba(8, 41, 19, 0.04);
+            border-radius: 8px;
+            background-image: url(images/t-b-s-texture.webp);
+            background-repeat: no-repeat;
+            background-size: cover;
+            text-align: center;
+        }
+
+        .cyber-safety-tips:hover {
+            transform: scale(1.1);
+        }
+
+        .cyber-safety-tips img {
+            width: 60px;
+            position: relative;
+            top: 3%;
+        }
+
+        .cyber-safety-tips h2 {
+            position: relative;
+            top: 1%;
+        }
+
+        .cyber-safety-tips p {
+            position: relative;
+            top: 5%;
+            color: black;
+        }
+
+        .cyber-safety-tips h4 {
+            position: relative;
+            top: 5%;
+        }
+
+        .cyber-awarness {
+            width: 22%;
+            box-shadow: 0px 4px 20px rgba(8, 41, 19, 0.04);
+            border-radius: 8px;
+            background-image: url(images/abstract-background.webp);
+            background-repeat: no-repeat;
+            background-size: cover;
+            text-align: center;
+        }
+
+        .cyber-awarness:hover {
+            transform: scale(1.1);
+        }
+
+        .cyber-awarness img {
+            width: 60px;
+            position: relative;
+            top: 3%;
+        }
+
+        .cyber-awarness h2 {
+            position: relative;
+            top: 1%;
+        }
+
+        .cyber-awarness p {
+            position: relative;
+            top: 5%;
+            color: black;
+        }
+
+        .cyber-awarness h4 {
+            position: relative;
+            top: 21%;
+        }
+
+        .daily-digest {
+            width: 22%;
+            box-shadow: 0px 4px 20px rgba(8, 41, 19, 0.04);
+            border-radius: 8px;
+            background-image: url(images/t-b-s-texture.webp);
+            background-repeat: no-repeat;
+            background-size: cover;
+            text-align: center;
+        }
+
+        .daily-digest:hover {
+            transform: scale(1.1);
+        }
+
+        .daily-digest img {
+            width: 60px;
+            position: relative;
+            top: 3%;
+        }
+
+        .daily-digest h2 {
+            position: relative;
+            top: 1%;
+        }
+
+        .daily-digest p {
+            position: relative;
+            top: 5%;
+            color: black;
+        }
+
+        .daily-digest h4 {
+            position: relative;
+            top: 14%;
+        }
+
+        .text {
+            color: black;
+        }
+
+        /* Style for footer */
         footer {
             background-color: #1d3557;
             color: white;
@@ -377,7 +397,8 @@
             color: #ffb703;
         }
 
-        p, a {
+        p,
+        a {
             color: white;
             font-size: 14px;
             line-height: 1.8;
@@ -415,88 +436,97 @@
             color: #ccc;
         }
 
-        /* Responsive design */
-        @media screen and (max-width: 600px) {
-            body{
-                display: none;
-            }
-        }
+        /* Responive for max-width: 630px */
+       @media screen and (max-width:1000px){
+          body{
+            display: none;
+          }
+       }
+        
     </style>
 </head>
+
 <body>
 
-    <header class="clearfix">
-        <a href="#" class="logo">CyberSecure</a>
+    <header>
+        <a href="#" class="logo"><img src="images/shield.png" alt=""></a>
         <nav>
             <ul>
-                <li><a href="#home">Home</a></li>
+                <li><a href="index.html">Home</a></li>
                 <li><a href="complaint.html">File a Complaint</a></li>
                 <li><a href="#track">Incident Tracking</a></li>
                 <li><a href="contact_us.html">Contact Us</a></li>
-                <li><a href="log_in.html">Log in</a></li>
+                <li><a href="log_in.html">Log out</a></li>
             </ul>
         </nav>
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
     </header>
 
-  <main> 
+
+    <main>
         <div class="banner">
             <img src="images/pmhm.png" alt="">
         </div>
-       <div class="container">
-        <div class="womenAndChild">
-            <p>Women/Children Related Crime</p>
-            <div class="button-container button-container-A">
-                <a href="women.html"><button>Register a complaint</button></a>
+        <div class="container">
+            <div class="womenAndChild">
+                <p>Women/Children Related Crime</p>
+                <div class="button-container button-container-A">
+                    <a href="women.html"><button>Register a complaint</button></a>
+                </div>
+            </div>
+            <div class="financialFraud">
+                <p>FINANCIAL FRAUD</p>
+                <div class="button-container button-container-B">
+                    <a href="#"><button>Register a complaint</button></a>
+                </div>
+            </div>
+            <div class="otherCyberCrime button-container-c">
+                <p>OTHER CYBER CRIME</p>
+                <div class="button-container">
+                    <a href="#"><button>Register a complaint</button></a>
+                </div>
             </div>
         </div>
-        <div class="financialFraud">
-            <p>FINANCIAL FRAUD</p>
-            <div class="button-container button-container-B">
-                <a href="#"><button>Register a complaint</button></a>
-            </div>
-        </div>
-        <div class="otherCyberCrime button-container-c">
-            <p>OTHER CYBER CRIME</p>
-            <div class="button-container">
-                <a href="#"><button>Register a complaint</button></a>
-            </div>
-        </div>
-       </div>
 
-       <div class="learning-container">
-        <div class="head-context">
-            <img src="images/folder.png" alt="">
-            <p>Learning Corner</p>
+        <div class="learning-container">
+            <div class="head-context">
+                <img src="images/folder.png" alt="">
+                <p>Learning Corner</p>
+            </div>
+            <div class="body-text">
+                <div class="citizen-manual">
+                    <img src="images/manual.png" alt="">
+                    <h2>CITIZEN MANUAL</h2>
+                    <p>It is a document to describe the functionalities and workflow that is provided to citizens on the
+                        cybercrime portal for reporting cybercrimes.</p>
+                    <h4><a href="#" class="text">Read More →</a></h4>
+                </div>
+                <div class="cyber-safety-tips">
+                    <img src="images/shield.png" alt="">
+                    <h2>CYBER SAFETY TIPS</h2>
+                    <p>To stay safe in the online world, it is important to follow important cyber safety practices
+                        which may help in protecting ourselves and our families from imminent threats that may harm our
+                        data and devices.</p>
+                    <h4><a href="#" class="text">Read More →</a></h4>
+                </div>
+                <div class="cyber-awarness">
+                    <img src="images/security.png" alt="">
+                    <h2>CYBER AWARENESS</h2>
+                    <p>Cyber awareness is an ongoing process of educating employees and citizens about the threats that
+                        lurk in cyberspace and how to act responsibly.</p>
+                    <h4><a href="#" class="text">Read More →</a></h4>
+                </div>
+                <div class="daily-digest">
+                    <img src="images/newspape.png" alt="">
+                    <h2>DAILY DIGEST</h2>
+                    <p>Comprehensive document prepared by Indian Cybercrime Coordination Centre (I4C) to aware employees
+                        and citizens about cyber fraud modus operandi.</p>
+                    <h4><a href="#" class="text">Read More →</a></h4>
+                </div>
+            </div>
         </div>
-        <div class="body-text">
-            <div class="citizen-manual">
-                <img src="images/manual.png" alt="">
-                <h2>CITIZEN MANUAL</h2>
-                <p>It is a document to describe the functionalities and workflow that is provided to citizens on the cybercrime portal for reporting cybercrimes.</p>
-                <h4>Read More →</h4>
-            </div>
-            <div class="cyber-safety-tips">
-                <img src="images/shield.png" alt="">
-                <h2>CYBER SAFETY TIPS</h2>
-                <p>To stay safe in the online world, it is important to follow important cyber safety practices which may help in protecting ourselves and our families from imminent threats that may harm our data and devices.</p>
-                <h4>Read More →</h4>
-            </div>
-            <div class="cyber-awarness">
-                <img src="images/security.png" alt="">
-                <h2>CYBER AWARENESS</h2>
-                <p>Cyber awareness is an ongoing process of educating employees and citizens about the threats that lurk in cyberspace and how to act responsibly.</p>
-                <h4>Read More →</h4>
-            </div>
-            <div class="daily-digest">
-                <img src="images/newspape.png" alt="">
-                <h2>DAILY DIGEST</h2>
-                <p>Comprehensive document prepared by Indian Cybercrime Coordination Centre (I4C) to aware employees and citizens about cyber fraud modus operandi.</p>
-                <h4>Read More →</h4>
-            </div>
-        </div>
-       </div>
     </main>
- 
+
     <footer>
         <div class="footer-container">
             <!-- Contact Info -->
@@ -506,7 +536,7 @@
                 <p>Email: contact@cybercomplaint.com</p>
                 <p>Phone: +91 1234 567 890</p>
             </div>
-    
+
             <!-- Quick Links -->
             <div class="footer-column">
                 <h4>Quick Links</h4>
@@ -515,7 +545,7 @@
                 <p><a href="#services">Services</a></p>
                 <p><a href="#privacy">Privacy Policy</a></p>
             </div>
-    
+
             <!-- Social Media Links -->
             <div class="footer-column">
                 <h4>Follow Us</h4>
@@ -527,13 +557,20 @@
                 </ul>
             </div>
         </div>
-    
+
         <!-- Footer Bottom -->
         <div class="footer-bottom">
             <p>&copy; 2024 Cyber Complaint. All Rights Reserved.</p>
         </div>
     </footer>
- 
+
 
 </body>
+<script>
+    function toggleMenu() {
+        const header = document.querySelector('header');
+        header.classList.toggle('menu-open');
+    }
+</script>
+
 </html>

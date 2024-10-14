@@ -1,62 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - CyberSecure</title>
+    <title>Contact US</title>
+    <link rel="icon" href="images/shield.png">
     <style>
-        /* General Styling */
+        /* Style for header */
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f1f1f1;
             margin: 0;
             padding: 0;
+            font-family: Arial, sans-serif;
         }
+
+        /* Style for header */
         header {
             background-color: #1d3557;
             padding: 10px 0;
             color: white;
             width: 100%;
+            height: 40px;
+            border: 2px solid white;
+            display: flex;
+            flex-direction: row;
         }
+
         .logo {
-            float: left;
-            font-size: 24px;
-            font-weight: bold;
-            color: #f1faee;
-            text-decoration: none;
-            width: 50%;
-            padding-left: 1%;
+            width: 45%;
         }
-        nav {
-            float: right;
+
+        .logo img {
+            width: 40px;
+            padding-left: 4%;
+        }
+
+        header nav {
             width: 49%;
         }
-        nav ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
+
+        header nav ul {
             width: 100%;
+            display: flex;
+            flex: row;
+            justify-content: space-around;
+            margin-top: 0px;
         }
-        nav ul li {
-            display: inline;
-            margin-left: 7%;
+
+        header nav ul li {
+            list-style: none;
         }
-        nav ul li a {
-            color: #f1faee;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 16px;
+
+        header nav ul li a {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-weight: bolder;
+            font-size: larger;
         }
-        nav ul li a:hover {
-            color: #a8dadc;
+
+        .hamburger {
+            display: none;
         }
-        /* Clearfix to handle float issues */
-        .clearfix::after {
-            content: "";
-            clear: both;
-            display: table;
-        }
+
+        /* Style for main */
         main{
             width: 100%;
         }
@@ -106,7 +111,7 @@
         .contact-container input[type="submit"]:hover {
             background-color: #457b9d;
         }
-
+        /* Style for footer */
         footer {
             background-color: #1d3557;
             color: white;
@@ -136,7 +141,8 @@
             color: #ffb703;
         }
 
-        p, a {
+        p,
+        a {
             color: white;
             font-size: 14px;
             line-height: 1.8;
@@ -174,28 +180,32 @@
             color: #ccc;
         }
 
-        /* Responsive design */
-        @media screen and (max-width: 600px) {
-            body{
-                display: none;
-            }
-        }
+        /* Responive for max-width: 630px */
+       @media screen and (max-width:1000px){
+          body{
+            display: none;
+          }
+       }
+        
     </style>
 </head>
+
 <body>
 
-    <header class="clearfix">
-        <a href="#" class="logo">CyberSecure</a>
+    <header>
+        <a href="#" class="logo"><img src="images/shield.png" alt=""></a>
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="complaint.html">File a Complaint</a></li>
                 <li><a href="#track">Incident Tracking</a></li>
                 <li><a href="contact_us.html">Contact Us</a></li>
-                <li><a href="log_in.html">Log in</a></li>
+                <li><a href="log_in.html">Log out</a></li>
             </ul>
         </nav>
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
     </header>
+
 
     <main>
         <div class="contact-container">
@@ -227,7 +237,7 @@
                 <p>Email: contact@cybercomplaint.com</p>
                 <p>Phone: +91 1234 567 890</p>
             </div>
-    
+
             <!-- Quick Links -->
             <div class="footer-column">
                 <h4>Quick Links</h4>
@@ -236,7 +246,7 @@
                 <p><a href="#services">Services</a></p>
                 <p><a href="#privacy">Privacy Policy</a></p>
             </div>
-    
+
             <!-- Social Media Links -->
             <div class="footer-column">
                 <h4>Follow Us</h4>
@@ -248,12 +258,20 @@
                 </ul>
             </div>
         </div>
-    
+
         <!-- Footer Bottom -->
         <div class="footer-bottom">
             <p>&copy; 2024 Cyber Complaint. All Rights Reserved.</p>
         </div>
     </footer>
 
+
 </body>
+<script>
+    function toggleMenu() {
+        const header = document.querySelector('header');
+        header.classList.toggle('menu-open');
+    }
+</script>
+
 </html>
