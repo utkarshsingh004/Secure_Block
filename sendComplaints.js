@@ -114,3 +114,33 @@ function generateData() {
 cron.schedule('*/5 * * * * *', async () => {
     await generateTable();
 });
+
+
+
+ 
+//******** To run this Node.js script in Visual Studio Code, follow these steps: *******
+
+// 1. Install Node.js and MySQL Database
+// Make sure you have Node.js installed, as well as a running MySQL database. If your MySQL server is not publicly accessible, consider running the code on the server where MySQL is hosted.
+
+// 2. Open the File in Visual Studio Code
+// Open VS Code.
+// Create a new file, name it sendComplaints.js, and paste your code into it.
+
+// 3. Install Required Packages
+// In the VS Code terminal, navigate to the folder where your file is saved and install the necessary packages:
+    //  npm install node-cron mysql2 nodemailer
+
+// 4. Configure Your Email Credentials
+// Update the nodemailer credentials to actual email information:
+  //  auth: {
+//     user: 'your-email@gmail.com',
+//     pass: 'your-email-app-password'
+// }
+// Note: For Gmail, you need to use an App Password instead of your regular password if you have two-factor authentication enabled.
+
+// 5. Run the Script
+// In the terminal, run:
+  //  node sendComplaints.js
+
+
