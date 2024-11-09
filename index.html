@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Complaint Login</title>
+    <link rel="icon" href="images/shield.png">
+    <style>
+         body {
+            font-family: Arial, sans-serif;
+            background-color: #f1f1f1;
+            margin: 0;
+            padding: 0;
+            background-color: #1d3557;
+        }
+        .login-container {
+            width: 100%;
+            max-width: 400px;
+            margin: 50px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+        h2 {
+            text-align: center;
+            color: #1d3557;
+            margin-bottom: 20px;
+        }
+        .login-container label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        .login-container input[type="email"],
+        .login-container input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .login-container input[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            background-color: #1d3557;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .login-container input[type="submit"]:hover {
+            background-color: #457b9d;
+        }
+        .login-container .forgot-password {
+            text-align: right;
+            margin-top: 10px;
+        }
+        .login-container .forgot-password a {
+            color: #457b9d;
+            text-decoration: none;
+        }
+        .login-container .forgot-password a:hover {
+            text-decoration: underline;
+        }
+        .login-container .signup {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .login-container .signup a {
+            color: #1d3557;
+            text-decoration: none;
+        }
+        .login-container .signup a:hover {
+            text-decoration: underline;
+        }
+        .message-container {
+            text-align: center;
+            margin-top: 15px;
+            font-weight: bold;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .success {
+            background-color: #4CAF50; /* Green */
+        }
+        .error {
+            background-color: #f44336; /* Red */
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .login-container {
+                width: 90%;
+                margin: 20px auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-container">
+    <h2>CyberSecure Login</h2>
+    <form id="loginForm">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+        
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+        
+        <input type="submit" value="Login">
+        
+        <div class="forgot-password">
+            <a href="#">Forgot your password?</a>
+        </div>
+
+        <div class="signup">
+            <p>Don't have an account? <a href="signup.php">Sign up here</a></p>
+        </div>
+    </form>
+</div>
+
+<!-- Message container for login feedback -->
+<div id="messageContainer" class="message-container"></div>
+
+<script>
+    // Example list of registered users (normally this data would be stored securely in a database)
+    let registeredUsers = [
+        { email: 'user@example.com', password: 'password123' }
+    ];
+    
+    // Event listener for form submission
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent form from submitting normally
+        
+        // Get email and password values
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        
+        // Find the message container
+        const messageContainer = document.getElementById('messageContainer');
+        
+        // Check if the user is registered
+        const user = registeredUsers.find(user => user.email === email && user.password === password);
+        
+        if (user) {
+            // Display success message
+            messageContainer.textContent = "Login successful!";
+            messageContainer.className = "message-container success";
+            
+            // Redirect after a brief delay
+            setTimeout(() => {
+                window.location.href = "home.html";
+            }, 1500);
+        } else {
+            // Display error message
+            messageContainer.textContent = "Invalid email or password. Please try again.";
+            messageContainer.className = "message-container error";
+        }
+    });
+    </script>
+
+</body>
+</html>
+
