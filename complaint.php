@@ -260,7 +260,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <nav>
             <ul>
                 <li><a href="home.html">Home</a></li>
-                <li><a href="log_in.html">Log out</a></li>
+                <li><a href="logout.html">Log out</a></li>
             </ul>
         </nav>
     </header>
