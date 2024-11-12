@@ -1,63 +1,74 @@
 <?php
 // Database configuration
 $host = 'vultr-prod-cfbaea5c-14b5-4c87-b3e2-9929eed22e05-vultr-prod-4489.vultrdb.com';
-$port = '16751'; // Specify your database port here
+$port = '16751';
 $dbname = 'defaultdb';
 $username = 'vultradmin';
 $password = 'special_password';
 
-// Connect to the database
 try {
     $pdo = new PDO("mysql:host=$host;port=$port;dbname=$dbname", $username, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
-    die("Database connection failed: " . $e->getMessage());
+    die("<div class='output-message'>Database connection failed: " . htmlspecialchars($e->getMessage()) . "</div>");
 }
 
+$outputMessage = "";
 
-
-// Check if form is submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $category = $_POST['category'];
-    $otherCategory = $_POST['other-category-text'] ?? null;
-    $description = $_POST['description'];
-    $dateOfIncident = $_POST['date'];
+    $category = htmlspecialchars(strip_tags($_POST['category']));
+    $description = htmlspecialchars(strip_tags($_POST['description']));
+    $dateOfIncident = htmlspecialchars(strip_tags($_POST['date']));
     $evidenceFilename = null;
 
-    // Handle file upload if an evidence file is provided
-    // if (isset($_FILES['evidence']) && $_FILES['evidence']['error'] == 0) {
-    //     $evidenceFilename = 'uploads/' . basename($_FILES['evidence']['name']);
-    //     move_uploaded_file($_FILES['evidence']['tmp_name'], $evidenceFilename);
-    // }
+    // File upload handling
+    if (isset($_FILES['evidence']) && $_FILES['evidence']['error'] == 0) {
+        $allowedTypes = ['image/jpeg', 'image/png', 'application/pdf'];
+        $fileType = mime_content_type($_FILES['evidence']['tmp_name']);
+        
+        if (in_array($fileType, $allowedTypes)) {
+            $evidenceFilename = 'uploads/' . basename($_FILES['evidence']['name']);
+            if (!move_uploaded_file($_FILES['evidence']['tmp_name'], $evidenceFilename)) {
+                die("<div class='output-message'>Failed to upload file.</div>");
+            }
+        } else {
+            die("<div class='output-message'>Invalid file type.</div>");
+        }
+    }
 
-    // Insert data into database
-    $stmt = $pdo->prepare("INSERT INTO complaints (category, other_category, description, date_of_incident, evidence_filename) VALUES (?, ?, ?, ?, ?)");
-    $stmt->execute([$category, $otherCategory, $description, $dateOfIncident, $evidenceFilename]);
+    try {
+        $stmt = $pdo->prepare("INSERT INTO complaints (category, description, incident_date, evidence, user_id) 
+                               VALUES (:category, :description, :dateOfIncident, :evidence, 1)");
+        
+        $stmt->bindParam(':category', $category);
+        $stmt->bindParam(':description', $description);
+        $stmt->bindParam(':dateOfIncident', $dateOfIncident);
+        $stmt->bindParam(':evidence', $evidenceFilename);
 
+        $stmt->execute();
 
-    // Execute the Python machine learning model
-    $pythonScriptPath = 'C:\Users\sharm\OneDrive\Desktop\hackhaton\Secure_Block-main\MODEL-main\model.ipynb';  // Replace with the actual path to your Python script
-    $command = "python3 $pythonScriptPath";  // Use python3 if that's the version in your environment
+        // Run Python model
+        $pythonScriptPath = '/path/to/model.py';
+        $command = escapeshellcmd("python3 $pythonScriptPath");
+        $output = shell_exec($command);
 
-    // Execute the command and capture output
-    $output = shell_exec($command);
-    echo "Python model executed successfully! Output: " . $output;
-
-    echo "Complaint submitted successfully!";
+        $outputMessage = "<div class='success-message'>Python model executed successfully!<br>Complaint submitted successfully!</div>";
+    } catch (Exception $e) {
+        $outputMessage = "<div class='error-message'>Error submitting complaint: " . htmlspecialchars($e->getMessage()) . "</div>";
+    }
 }
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>File a Cyber Complaint</title>
     <link rel="icon" href="images/shield.png">
     <style>
-        /* Style for header */
-        body {
+   /* Style for header */
+   body {
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
@@ -248,27 +259,41 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           body{
             display: none;
           }
-       }
-        
+       }        /* Success Message */
+        .success-message {
+            color: green;
+            text-align: center;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        /* Error Message */
+        .error-message {
+            color: red;
+            text-align: center;
+            font-weight: bold;
+            margin: 20px 0;
+        }
     </style>
 </head>
-
 <body>
 
     <header>
-        <a href="#" class="logo"><img src="images/shield.png" alt=""></a>
+    <a href="#" class="logo"><img src="images/shield.png" alt=""></a>
         <nav>
             <ul>
                 <li><a href="home.html">Home</a></li>
-                <li><a href="logout.html">Log out</a></li>
+                <li><a href="log_in.html">Log out</a></li>
             </ul>
-        </nav>
-    </header>
-
+        </nav>    </header>
 
     <main>
         <div class="complaint-container">
             <h2>File a Cyber Complaint</h2>
+
+            <!-- Display success or error message -->
+            <?php if (!empty($outputMessage)) echo $outputMessage; ?>
+
             <form action="complaint.php" method="POST" enctype="multipart/form-data">
                 <label for="category">Category of Complaint</label>
                 <select id="category" name="category" required onchange="toggleOtherCategoryInput()">
@@ -303,7 +328,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </main>
 
     <footer>
-        <div class="footer-container">
+    <div class="footer-container">
             <!-- Contact Info -->
             <div class="footer-column">
                 <h4>Contact Us</h4>
@@ -336,28 +361,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <!-- Footer Bottom -->
         <div class="footer-bottom">
             <p>&copy; 2024 Cyber Complaint. All Rights Reserved.</p>
-        </div>
-    </footer>
-
-
+        </div>    </footer>
 </body>
-<script>
-    function toggleMenu() {
-        const header = document.querySelector('header');
-        header.classList.toggle('menu-open');
-    }
-</script>
-<script>
-    function toggleOtherCategoryInput() {
-        var categorySelect = document.getElementById('category');
-        var otherInput = document.getElementById('other-category');
-
-        if (categorySelect.value === 'Other') {
-            otherInput.style.display = 'block';
-        } else {
-            otherInput.style.display = 'none';
-        }
-    }
-</script>
-
 </html>
